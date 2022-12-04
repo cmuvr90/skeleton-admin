@@ -27,9 +27,9 @@ export const NavigationMarkup = () => {
                     onClick: () => {},
                 },
                 {
-                    label: 'Jaded Pixel Orders',
+                    label: 'Test page',
                     icon: OrdersMajor,
-                    onClick: () => {},
+                    url: '/test'
                 },
             ]}
         />

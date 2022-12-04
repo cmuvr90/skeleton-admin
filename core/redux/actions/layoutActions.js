@@ -29,13 +29,13 @@ export const onChangeLoading = (state = true) => ({
  * @returns {{payload: *, type: string}}
  */
 export const onChangeMessage = (message = null, error = false, duration = 3000) => ({
-    type: ON_CHANGE_MESSAGE,
-    payload: message ? {
-        content: Array.isArray(message) ? message.reverse() : [message],
-        error: error,
-        duration: duration,
-    } : null,
-})
+        type: ON_CHANGE_MESSAGE,
+        payload: message ? {
+            content: Array.isArray(message) ? message.reverse() : [message],
+            error: error,
+            duration: duration,
+        } : null,
+    })
 
 /**
  *
