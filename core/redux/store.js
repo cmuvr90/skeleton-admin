@@ -3,6 +3,7 @@ import {combineReducers} from 'redux'
 import think from 'redux-thunk'
 import {indexReducer} from './reducers/indexReducer'
 import {layoutReducer} from './reducers/layoutReducer'
+import {usersReducer} from './reducers/usersReducer'
 import {testReducer} from './reducers/testReducer'
 import {composeWithDevTools} from '@redux-devtools/extension'
 import createSagaMiddleware from 'redux-saga'
@@ -17,6 +18,7 @@ const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
   index: indexReducer,
   layout: layoutReducer,
+  users: usersReducer,
   test: testReducer,
 })
 

@@ -1,12 +1,13 @@
 import React from 'react'
 import {Page, Layout, Stack, Button, TextStyle} from '@shopify/polaris'
 import {useDispatch, useSelector} from 'react-redux';
-import {asyncIncrement, asyncDecrement, getPostsAndUsers} from '../../redux/actions/testActions';
+import {asyncIncrement, asyncDecrement} from '../../redux/actions/testActions';
+import {getUsers} from '../../redux/actions/usersActions';
 
 export const TestPage = () => {
 
   const count = useSelector(store => store.test.count);
-  const users = useSelector(store => store.test.users);
+  const {users, loading} = useSelector(store => store.users);
   const posts = useSelector(store => store.test.posts);
   const dispatch = useDispatch();
 
@@ -33,7 +34,7 @@ export const TestPage = () => {
               posts.map(i => <TextStyle key={i.id}>{i.title}</TextStyle>)
             }
           </Stack>
-          <Button onClick={() => dispatch(getPostsAndUsers())}>Get data</Button>
+          <Button onClick={() => dispatch(getUsers())} loading={loading}>Get data</Button>
         </Stack>
 
       </Layout.AnnotatedSection>

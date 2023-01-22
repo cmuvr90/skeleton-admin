@@ -1,40 +1,37 @@
-import {put, takeEvery, call, fork} from 'redux-saga/effects'
-import {GET_POSTS_AND_USERS, setPosts, setUsers} from '../redux/actions/testActions'
+import {put, takeEvery, call} from 'redux-saga/effects'
+import {GET_USERS, setUsers, setLoading} from '../redux/actions/usersActions'
 import {onChangeMessage} from '../redux/actions/layoutActions';
+import Api from '../services/Api';
 
-const apiGetResource = async (resource = 'posts') => {
-  const data = await fetch(`https://jsonplaceholder.typicode.com/${resource}?`);
-  if (data?.ok) {
-    return await data.json();
-  } else {
-    throw Error('Error!');
-  }
+/**
+ *
+ * @param method
+ * @param params
+ * @returns {Promise<*>}
+ */
+const resource = async (method = '', params = {}) => {
+  const {error, data} = await new Api().users[method](params);
+  if (error) throw Error(error);
+  return data;
 }
 
-function* getUsersWorker() {
+/**
+ *
+ * @param action
+ * @returns {Generator<SimpleEffect<"CALL", CallEffectDescriptor<function(*=, *=): * extends ((...args: any[]) => SagaIterator<infer RT>) ? RT : (function(*=, *=): * extends ((...args: any[]) => Promise<infer RT>) ? RT : (function(*=, *=): * extends ((...args: any[]) => infer RT) ? RT : never))>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string}>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: boolean, type: string}>>, void, *>}
+ */
+function* setUsersWorker(action = {}) {
+  const params = action?.payload;
   try {
-    const users = yield call(apiGetResource, 'users');
+    yield put(setLoading());
+    const users = yield call(resource, 'list', params);
     yield put(setUsers(users));
-  } catch (e) {
-    console.log('test');
-    yield put(onChangeMessage(e?.message || e, true))
-  }
-}
-
-function* getPostsWorker() {
-  try {
-    const posts = yield call(apiGetResource, 'sa');
-    yield put(setPosts(posts));
+    yield put(setLoading(false));
   } catch (e) {
     yield put(onChangeMessage(e?.message || e, true))
   }
-}
-
-function* getDataWorker() {
-  yield fork(getUsersWorker)
-  yield fork(getPostsWorker)
 }
 
 export function* usersWatcher() {
-  yield takeEvery(GET_POSTS_AND_USERS, getDataWorker)
+  yield takeEvery(GET_USERS, setUsersWorker)
 }
