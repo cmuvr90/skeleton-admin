@@ -15,29 +15,29 @@
   "license": "ISC",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
-    "@shopify/polaris": "^10.9.0",
-    "@splidejs/react-splide": "^0.7.11",
-    "next": "^12.3.0",
+    "@shopify/polaris": "^10.22.0",
+    "@splidejs/react-splide": "^0.7.12",
+    "next": "^13.1.4",
     "random-id": "^1.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.4",
+    "react-redux": "^8.0.5",
     "redux": "^4.2.0",
-    "redux-saga": "^1.2.1",
-    "redux-thunk": "^2.4.1",
-    "sass": "^1.54.9",
-    "styled-components": "^5.3.5"
+    "redux-saga": "^1.2.2",
+    "redux-thunk": "^2.4.2",
+    "sass": "^1.57.1",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "@shopify/polaris-icons": "^6.4.0",
-    "@types/node": "18.7.16",
-    "@types/react": "18.0.19",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
+    "@shopify/polaris-icons": "^6.8.0",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
     "babel-plugin-styled-components": "^2.0.7",
-    "eslint": "^8.23.0",
-    "eslint-plugin-react": "^7.31.8",
-    "prettier": "2.7.1",
-    "typescript": "4.8.3"
+    "eslint": "^8.32.0",
+    "eslint-plugin-react": "^7.32.1",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.4"
   }
 }

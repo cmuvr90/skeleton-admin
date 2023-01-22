@@ -19,11 +19,11 @@ export const MainLayout = Template => props => {
     const topBar = useSelector(state => state.layout.topBar)
 
     const logo = {
-        width: 124,
-        topBarSource: 'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-        contextualSaveBarSource: 'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-        url: 'http://jadedpixel.com',
-        accessibilityLabel: 'Jaded Pixel',
+        width: 50,
+        topBarSource: 'https://sun6-22.userapi.com/s/v1/if1/1L7AV_Vxv9WBrLRZg8_FmtqF_gZxJEraUrkwioEm72UMNxebDmSqy6BUzyAxYBET1ie1GcUq.jpg?size=100x100&quality=96&crop=0,0,500,500&ava=1',
+        contextualSaveBarSource: 'https://sun6-22.userapi.com/s/v1/if1/1L7AV_Vxv9WBrLRZg8_FmtqF_gZxJEraUrkwioEm72UMNxebDmSqy6BUzyAxYBET1ie1GcUq.jpg?size=100x100&quality=96&crop=0,0,500,500&ava=1',
+        url: 'http://localhost:3001',
+        accessibilityLabel: 'SPRABY',
     }
 
     const [mobileNavigationActive, setMobileNavigationActive] = useState(false)
@@ -81,7 +81,7 @@ export const MainLayout = Template => props => {
     return <Frame
         logo={logo}
         topBar={<TopBarMarkup toggleMobileNavigationActive={toggleMobileNavigationActive} />}
-        navigation={<NavigationMarkup />}
+        navigation={<NavigationMarkup router={props.router} />}
         showMobileNavigation={mobileNavigationActive}
         onNavigationDismiss={toggleMobileNavigationActive}
     >
